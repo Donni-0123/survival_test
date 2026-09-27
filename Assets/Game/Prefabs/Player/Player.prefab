@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4187235642133913596, guid: d1590df789725ca4ea776e4c859e5646, type: 3}
+  m_Sprite: {fileID: -82818411232421557, guid: eab17a38cbca4bc4b900420aee91fc62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 4655107241897674174}
   - component: {fileID: 9043583231903929231}
   - component: {fileID: 4666347285224463026}
+  - component: {fileID: 900000101}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -212,3 +213,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 5
+--- !u!114 &900000101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8414393511633073398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5e685869464024b1829870785a790f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 100
+  currentHealth: 100
