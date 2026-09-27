@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class AcidPool : MonoBehaviour
 {
-    [SerializeField, Min(0f)] private float damagePerSecond = 25f;
+    [SerializeField, Min(0f)] private float damagePerSecond = 200f;
 
     private void Reset()
     {
