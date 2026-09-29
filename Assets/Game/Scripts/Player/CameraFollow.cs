@@ -1,25 +1,45 @@
+using Unity.Netcode;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private float smoothTime = 0.15f;
-    [SerializeField] private Vector3 offset = new Vector3(0f, 0f, -10f);
+    [SerializeField] private float smoothSpeed = 5f;
 
-    private Vector3 currentVelocity;
+    private Transform target;
 
     private void LateUpdate()
     {
         if (target == null)
+        {
+            FindLocalPlayer();
             return;
+        }
 
-        Vector3 targetPosition = target.position + offset;
+        Vector3 targetPosition = target.position;
+        targetPosition.z = transform.position.z;
 
-        transform.position = Vector3.SmoothDamp(
+        transform.position = Vector3.Lerp(
             transform.position,
             targetPosition,
-            ref currentVelocity,
-            smoothTime
+            smoothSpeed * Time.deltaTime
         );
+    }
+
+    private void FindLocalPlayer()
+    {
+        if (NetworkManager.Singleton == null)
+            return;
+
+        foreach (var networkObject in FindObjectsOfType<NetworkObject>())
+        {
+            if (!networkObject.IsOwner)
+                continue;
+
+            if (networkObject.CompareTag("Player"))
+            {
+                target = networkObject.transform;
+                return;
+            }
+        }
     }
 }
